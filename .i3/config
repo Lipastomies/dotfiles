@@ -120,7 +120,7 @@ bindsym Mod1+minus scratchpad show
 
 set $tag1 "term"
 set $tag2 "www"
-set $tag3 "music"
+set $tag3 "media"
 set $tag4 "code"
 set $tag5 "Do"
 set $tag6 "you"
