@@ -1,4 +1,5 @@
 
+
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
@@ -32,6 +33,13 @@ set $mod Mod1
 
 # use Mouse+Mod1 to drag floating windows to their wanted position
 floating_modifier Mod1
+
+####################
+#GAPS
+gaps inner 10
+####################
+
+
 
 # start a terminal
 bindsym Mod1+Return exec i3-sensible-terminal
@@ -140,12 +148,12 @@ bindsym Mod1+Shift+1 move container to workspace $tag1
 bindsym Mod1+Shift+2 move container to workspace $tag2
 bindsym Mod1+Shift+3 move container to workspace $tag3
 bindsym Mod1+Shift+4 move container to workspace $tag4
-bindsym Mod1+Shift+5 move container to workspace 5
-bindsym Mod1+Shift+6 move container to workspace 6
-bindsym Mod1+Shift+7 move container to workspace 7
-bindsym Mod1+Shift+8 move container to workspace 8
-bindsym Mod1+Shift+9 move container to workspace 9
-bindsym Mod1+Shift+0 move container to workspace 10
+bindsym Mod1+Shift+5 move container to workspace $tag5
+bindsym Mod1+Shift+6 move container to workspace $tag6
+bindsym Mod1+Shift+7 move container to workspace $tag7
+bindsym Mod1+Shift+8 move container to workspace $tag8
+bindsym Mod1+Shift+9 move container to workspace $tag9
+bindsym Mod1+Shift+0 move container to workspace $tag10
 
 # reload the configuration file
 bindsym Mod1+Shift+c reload
