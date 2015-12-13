@@ -1,5 +1,3 @@
-
-
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
@@ -36,29 +34,94 @@ floating_modifier Mod1
 
 ####################
 #GAPS
-gaps inner 10
+gaps inner 0
 ####################
+#GAPS MODE
+
+smart_gaps on
+smart_borders on
 
 
+set $mode_gaps Gaps: (<-) outer, (->) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym Left      mode "$mode_gaps_outer"
+        bindsym Right      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym Up  	gaps inner current plus 5
+        bindsym Down 	gaps inner current minus 5
+        bindsym Left    gaps inner current set 0
+		bindsym Right   gaps inner current set 20
+		
+        bindsym Shift+Up  	gaps inner all plus 5
+        bindsym Shift+Down 	gaps inner all minus 5
+        bindsym Shift+Left  gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym Up  		gaps outer current plus 5
+        bindsym Down 		gaps outer current minus 5
+        bindsym Left 		gaps outer current set 0
+		bindsym Right     	gaps outer current set 20
+
+        bindsym Shift+Up  	gaps outer all plus 5
+        bindsym Shift+Down 	gaps outer all minus 5
+        bindsym Shift+Left  gaps outer all set 0
+		bindsym Shift+Right gaps outer current set 20
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+
+#set $mode_gaps Gaps
+#bindsym $mod+Shift+g mode "$mode_gaps"
+#mode "$mode_gaps"{
+#	bindsym Up gaps inner current plus 5
+#	bindsym Down gaps inner current minus 5
+#	bindsym Left gaps inner  current set 0
+#	bindsym Right gaps inner  current set 20
+#	bindsym Return mode "default"
+#	bindsym Escape mode "default"
+#
+#
+#}
+
+hide_edge_borders vertical
+##################
 
 # start a terminal
-bindsym Mod1+Return exec i3-sensible-terminal
+bindsym Mod1+Return exec --no-startup-id i3-sensible-terminal
+
+bindsym $mod+Tab focus right
 
 # kill focused window
 bindsym Mod1+Shift+q kill
 
-# start dmenu (a program launcher)
-bindsym Mod1+d exec dmenu_run
+# start dmenu_recent_aliases (a program launcher)
+bindsym Mod1+d exec --no-startup-id dmenu_recent_aliases
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 #bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop
 
 #start firefox
-bindsym Mod1+Shift+i exec firefox
+bindsym Mod1+Shift+i exec --no-startup-id chromium
 #start thunar
-bindsym Mod1+Shift+t exec thunar
+bindsym Mod1+Shift+t exec --no-startup-id thunar
+bindsym Mod1+Shift+m exec --no-startup-id mousepad
 
+#toggle monitors
+bindsym Mod1+Shift+s exec  --no-startup-id /bin/bash screen_toggle.sh
 
 # change focus
 bindsym Mod1+$left focus left
@@ -115,19 +178,19 @@ bindsym Mod1+Shift+minus move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
-bindsym Mod1+minus scratchpad show
+bindsym Mod1+- scratchpad show
 #name workspaces
 
-set $tag1 "term"
-set $tag2 "www"
-set $tag3 "media"
-set $tag4 "code"
-set $tag5 "Do"
-set $tag6 "you"
-set $tag7 "really"
-set $tag8 "need"
-set $tag9 "this"
-set $tag10 "many?"
+set $tag1 "I"
+set $tag2 "II"
+set $tag3 "III"
+set $tag4 "IV"
+set $tag5 "V"
+set $tag6 "VI"
+set $tag7 "VII"
+set $tag8 "VIII"
+set $tag9 "IX"
+set $tag10 "X"
 
 
 
@@ -142,6 +205,16 @@ bindsym Mod1+7 workspace $tag7
 bindsym Mod1+8 workspace $tag8
 bindsym Mod1+9 workspace $tag9
 bindsym Mod1+0 workspace $tag10
+bindsym Mod1+F1 workspace 1
+bindsym Mod1+F2 workspace 2
+bindsym Mod1+F3 workspace 3
+bindsym Mod1+F4 workspace 4
+bindsym Mod1+F5 workspace 5
+bindsym Mod1+F6 workspace 6
+bindsym Mod1+F7 workspace 7
+bindsym Mod1+F8 workspace 8
+bindsym Mod1+F9 workspace 9
+bindsym Mod1+F10 workspace 10
 
 # move focused container to workspace
 bindsym Mod1+Shift+1 move container to workspace $tag1
@@ -154,6 +227,16 @@ bindsym Mod1+Shift+7 move container to workspace $tag7
 bindsym Mod1+Shift+8 move container to workspace $tag8
 bindsym Mod1+Shift+9 move container to workspace $tag9
 bindsym Mod1+Shift+0 move container to workspace $tag10
+bindsym Mod1+Shift+F1 move container to workspace 1
+bindsym Mod1+Shift+F2 move container to workspace 2
+bindsym Mod1+Shift+F3 move container to workspace 3
+bindsym Mod1+Shift+F4 move container to workspace 4
+bindsym Mod1+Shift+F5 move container to workspace 5
+bindsym Mod1+Shift+F6 move container to workspace 6
+bindsym Mod1+Shift+F7 move container to workspace 7
+bindsym Mod1+Shift+F8 move container to workspace 8
+bindsym Mod1+Shift+F9 move container to workspace 9
+bindsym Mod1+Shift+F10 move container to workspace 10
 
 # reload the configuration file
 bindsym Mod1+Shift+c reload
@@ -188,7 +271,7 @@ mode "$mode_resize" {
 }
 
 bindsym Mod1+r mode "$mode_resize"
-
+ 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 #bar {
@@ -198,37 +281,49 @@ bindsym Mod1+r mode "$mode_resize"
 #    status_command i3status ~/.i3status.conf
 #}
 bar {
+	
+    #mode hide
+    #hidden_state hide
+    #modifier Mod1
 	position top
 	status_command i3status ~/.i3status.conf
 	colors {
-	# solarized
-		#background #073642
-		#statusline #eee8d5
-		#focused_workspace #cb4b16 #cb4b16 #eee8d5
-		#active_workspace #cb4b16 #cb4b16 #eee8d5
-		#inactive_workspace #b58900 #b58900 #eee8d5
-
-		#zenburn
-		background #3f3f3f
+        #zenburn
+		background #444444
 		statusline #dcdccc
-		 
-		focused_workspace #93b3a3 #3f3f3f #93b3a3
-		active_workspace #ffcfaf #3f3f3f #ffcfaf
-		inactive_workspace #636363 #3f3f3f #dcdccc
-		urgent_workspace #dca3a3 #3f3f3f #dca3a3
+		#------				border	bg		txt			
+		focused_workspace 	#dcdccc #dcdccc #444444
+		active_workspace 	#dcdccc #dcdccc #444444
+		inactive_workspace 	#444444 #444444 #dcdccc
+		urgent_workspace 	#f18c96 #f18c96 #444444
+
+		
 	} 
 }
 
-new_window pixel 2
-new_float pixel 2
+new_window pixel 3
+new_float pixel 3
 
+#assignments:
+#music and videos to media,
+#htop to system
+#web browsers to web
+#coding tools to code
+#irssi to irssi
+
+assign [class = "Eclipse"] $tag4
+assign [class = "mpv"] $tag3
+assign [class = "^URxvt$" instance ="^ncmpcpp$" ] $tag3
+#assign [class = "Chromium"] $tag2
+#assign [class = "Firefox"] $tag2
+assign [class = "^URxvt$" instance ="^htop$" ] $tag1
 #poweroff
 
 
 set $mode_system System (l) lock, (e) logout, (r) reboot, (Powerkey) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym e exec --no-startup-id i3-msg exit 
+    bindsym l mode "default"; exec --no-startup-id i3lock -i /home/lipastomies/Pictures/bgs/1st_trails.png
+    bindsym e exec --no-startup-id i3-msg exit
     bindsym r exec --no-startup-id systemctl reboot
     bindsym XF86PowerOff exec --no-startup-id systemctl poweroff
 
@@ -239,26 +334,24 @@ mode "$mode_system" {
 bindsym $mod+XF86PowerOff mode "$mode_system"
 
 #function buttons, mainly backlight and  sound:
-bindsym F6 exec xbacklight -dec 10
-bindsym F7 exec xbacklight -inc 10
-bindsym F8 exec pactl set-sink-mute 1 toggle
-bindsym F9 exec pactl set-sink-mute 1 false && pactl -- set-sink-volume 1 -5%
-bindsym F10 exec pactl set-sink-mute 1 false && pactl -- set-sink-volume 1 +5%
+bindsym Shift+F6 exec --no-startup-id xbacklight -dec 10
+bindsym Shift+F7 exec --no-startup-id xbacklight -inc 10
+bindsym Shift+F8 exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym Shift+F9 exec --no-startup-id pactl set-sink-mute 0 false && pactl -- set-sink-volume 0 -5%
+bindsym Shift+F10 exec --no-startup-id pactl set-sink-mute 0 false && pactl -- set-sink-volume 0 +5%
+
 
 
 ## Colours - Zenburn
 ##---------
 #colourclass                border 	backgr. text 	indicator
-client.focused 				#688060 #688060 #303030 #ffcfaf
-client.focused_inactive 	#3f3f3f #3F3F3F #7f9f7f #3f3f3f
-client.unfocused 			#3f3f3f #3F3F3F #DCDCCC #3f3f3f
-client.urgent 				#dca3a3 #dca3a3 #DCDCCC #3f3f3f 
+client.focused 				#93b3a3 #93b3a3 #303030 #ffcfaf
+client.focused_inactive 	#444444 #444444 #7f9f7f #444444
+client.unfocused 			#444444 #444444 #DCDCCC #444444
+client.urgent 				#dca3a3 #dca3a3 #DCDCCC #444444
 
-
-# class 				border 	backgr. text 	indicator
-#client.focused 			#859900 #859900 #fdf6e3 #2e9ef4
-#client.focused_inactive #268bd2 #268bd2 #fdf6e3 #484e50
-#client.unfocused 		#333333 #93a1a1 #fdf6e3 #292d2e
+#Startup windows
+exec --no-startup-id urxvt -name htop -e htop
 
 #######################################################################
 # automatically start i3-config-wizard to offer the user to create a
@@ -269,6 +362,7 @@ client.urgent 				#dca3a3 #dca3a3 #DCDCCC #3f3f3f
 #
 # Please remove the following exec line:
 #######################################################################
-exec i3-config-wizard/home/lipastomies/.config/
-exec_always sh ~/.config/feh/.fehbg
-exec_always compton -b --config /home/lipastomies/.config/compton/compton.config 
+#exec i3-config-wizard/home/lipastomies/.config/
+exec_always --no-startup-id sh ~/.config/feh/.fehbg
+exec_always --no-startup-id compton -b --config /home/lipastomies/.config/compton/compton.config 
+#exec --no-startup-id compton -cCGb --backend glx --vsync opengl
