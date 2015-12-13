@@ -1,0 +1,1 @@
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]&& XKB_DEFAULT_LAYOUT=fi && sh ~/.autostart/open_wm.sh

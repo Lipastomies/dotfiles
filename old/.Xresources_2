@@ -1,0 +1,84 @@
+Xft.rgba: none
+Xft.hintstyle: hintfull
+URxvt.perl-ext-common: default,clipboard
+URxvt.iso14755: False
+URxvt.clipboard.copycmd:  xsel -ib
+URxvt.clipboard.pastecmd: xsel -ob
+
+!------------------------------------------------------------------------------
+
+! Common
+
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+
+! Light
+
+ #define S_base03        #222222
+ #define S_base02        #FFFFFF
+ #define S_base01        #666666
+ #define S_base00        #505050
+ #define S_base0         #303030
+ #define S_base1         #494949
+ #define S_base2         #073642
+ #define S_base3         #002b36
+
+
+! To only apply colors to your terminal, for example, prefix
+! the color assignment statement with its name. Example:
+!
+! URxvt*background:            S_base03
+
+!URxvt.*background:              S_base03
+URxvt.foreground:              S_base0
+URxvt.*cursorColor:             S_base0
+
+URxvt*color0:                  S_base02
+URxvt*color1:                  S_red
+URxvt*color2:                  S_green
+URxvt*color3:                  S_yellow
+URxvt*color4:                  S_blue
+URxvt*color5:                  S_magenta
+URxvt*color6:                  S_cyan
+URxvt*color7:                  S_base2
+URxvt*color9:                  S_orange
+URxvt*color8:                  S_base0
+URxvt*color10:                 S_base1
+URxvt*color11:                 S_base00
+URxvt*color12:                 S_base0
+URxvt*color13:                 S_violet
+URxvt*color14:                 S_base1
+URxvt*color15:                 S_base3
+
+
+
+
+
+
+!------------------------------------------------------------------------------
+! u r x v t
+
+URxvt*geometry:           100*25
+URxvt*font:               xft:Dejavu Sans Mono:size=10
+URxvt*urlLauncher:        chrome 
+URxvt*scrollBar:          false
+URxvt*scrollBar_right:    true
+URxvt*scrollColor:        #000000
+URxvt*.depth:			  32
+URxvt.background:         rgba:DD00/DD00/DD00/5555
+
+
+!---------------------------------------------------
+! d z e n 2
+
+dzen2.font:       -*-fixed-*-*-*-*-*-*-*-*-*-*-*-*
+dzen2.foreground: #22EE11
+dzen2.background: black
+

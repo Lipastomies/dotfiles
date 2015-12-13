@@ -23,4 +23,3 @@ color1 = "cyan"
 color2 = "cyan"  
 active_column_color = "cyan"  
 active_window_border = "blue"
-enable_window_title = yes
